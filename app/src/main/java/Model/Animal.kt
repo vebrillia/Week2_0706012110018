@@ -3,10 +3,11 @@ package Model
 import android.os.Parcel
 import android.os.Parcelable
 
-open class Animal(
-    var name:String?,
-    var species:String?,
-    var age:Int?,
+open abstract class Animal(
+    open val id:Int, open var name:String?, open var species:String?, open var age:Int?,
+
+
+
        ) {
 
     var imageUri: String = ""

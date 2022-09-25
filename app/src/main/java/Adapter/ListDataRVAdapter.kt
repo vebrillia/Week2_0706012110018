@@ -1,5 +1,6 @@
 package Adapter
 
+import Database.GlobalVar
 import Interface.CardListener
 import Model.Animal
 import android.net.Uri

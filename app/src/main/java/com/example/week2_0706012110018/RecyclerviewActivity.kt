@@ -4,23 +4,22 @@ package com.example.week2_0706012110018
 import Adapter.ListDataRVAdapter
 import Database.GlobalVar
 import Interface.CardListener
+import Model.Animal
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.activity_recyclerview.*
+import kotlinx.android.synthetic.main.activity_recyclerview.view.*
 import java.util.jar.Manifest
 
 class RecyclerviewActivity : AppCompatActivity(), CardListener {
-
+    private  lateinit var animal: Animal
     private val adapter = ListDataRVAdapter(GlobalVar.listDataAnimal,this)
     private var jumlah : Int = 0
 
@@ -106,6 +105,13 @@ class RecyclerviewActivity : AppCompatActivity(), CardListener {
         startActivity(myIntent)
     }
 
+    override fun onFilterClick(position: Int) {
+        radioButton2.setOnClickListener {
+            GlobalVar.listDataAnimal.get(position).species = "Ayam"
+
+
+        }
+    }
 
 
 }

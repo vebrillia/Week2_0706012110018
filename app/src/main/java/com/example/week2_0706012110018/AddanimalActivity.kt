@@ -14,6 +14,9 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.android.synthetic.main.activity_addanimal.*
+import kotlinx.android.synthetic.main.activity_card.*
+import kotlinx.android.synthetic.main.activity_delete.*
+import kotlinx.android.synthetic.main.activity_delete.species
 import kotlinx.android.synthetic.main.activity_recyclerview.*
 
 class AddanimalActivity : AppCompatActivity() {
@@ -70,32 +73,35 @@ class AddanimalActivity : AppCompatActivity() {
         }
 
         add_button.setOnClickListener {
-//
+          var name= input_name.editText?.text.toString().trim()
+            var age = 0
+            var species = findViewById<RadioButton>(animalradio.checkedRadioButtonId).text.toString().trim();
 
-            if (animalradio.checkedRadioButtonId == -1) {
-                var name = input_name.editText?.text.toString().trim()
-                var age = 0
-                var species = ""
-                animal = Chicken(name, species, age)
-                checker()
-                
-            } else {
-                var name = input_name.editText?.text.toString().trim()
-                var age = 0
-                var species =
-                    findViewById<RadioButton>(animalradio.checkedRadioButtonId).text.toString()
-                if (species == "Chicken") {
-                    animal = Chicken(name, species, age)
+            if(position==-1){
+                if(species == "Chicken") {
+                    animal = Chicken(GlobalVar.increment++,name, species, age)
                     checker()
-                } else if (species == "Cow") {
-                    animal = Cow(name, species, age)
+                }else if(species == "Cow"){
+                    animal = Cow(GlobalVar.increment++,name, species, age)
                     checker()
-                } else {
-                    animal = Goat(name, species, age)
+                }else{
+                    animal = Goat(GlobalVar.increment++,name, species, age)
                     checker()
                 }
-
+            } else{
+            if(species == "Chicken") {
+                animal = Chicken(GlobalVar.increment++,name, species, age)
+                checker()
+            }else if(species == "Cow"){
+                animal = Cow(GlobalVar.increment++,name, species, age)
+                checker()
+            }else{
+                animal = Goat(GlobalVar.increment++,name, species, age)
+                checker()
             }
+
+
+        }
 
 
         }
